@@ -1,0 +1,91 @@
+{/* {this.state.token ? (
+					<form onSubmit={searchArtists}>
+						<input type="text" onChange={(e) => setSearchKey(e.target.value)} />
+						<button type={"submit"}>Search</button>
+					</form>
+				) : (
+					<h2>Please login</h2>
+				)} */}
+
+				{/* <div className="WRAP">
+					<div className="artists">
+						<h1>Songs</h1>
+						{renderArtists()}
+					</div>
+					<div className="playlists">
+						<h1>Playlists</h1>
+						{renderPlaylists()}
+					</div>
+				</div> */}
+
+				const searchArtists = async (e) => {
+			e.preventDefault();
+			const { data } = await axios.get("https://api.spotify.com/v1/search", {
+				headers: {
+					Authorization: `Bearer ${this.state.token}`,
+				},
+				params: {
+					q: this.state.searchKey,
+					type: "track",
+				},
+			});
+			const artists = data.tracks.items;
+
+			this.setState({ artists });
+		};
+
+		const setSearchKey = (searchKey) => {
+			this.setState({ searchKey });
+		};
+
+		const renderArtists = () => {
+			return this.state.artists.map((artist) => (
+				<div className="artist" key={artist.id}>
+					{artist.album && (
+						<img
+							className="artistPic"
+							width={"100%"}
+							src={artist.album.images[0].url}
+							alt=""
+						/>
+					)}{" "}
+					{!!artist.images && <div>No Image</div>}
+					<h3>{artist.name}</h3>
+				</div>
+			));
+		};
+
+		const renderPlaylists = () => {
+			return this.state.playlists.map((playlist) => (
+				<div className="playlist" key={playlist.id}>
+					{playlist.name && (
+						<img
+							className="playlistPic"
+							width={"100%"}
+							src={playlist.images[0].url}
+							alt=""
+						/>
+					)}{" "}
+					{!playlist.images && <div>No Image</div>}
+					<h3>{playlist.name}</h3>
+				</div>
+			));
+		};
+
+		renderUserPlaylists = async (token, userId) => {
+		try {
+			const { data } = await axios.get(
+				`https://api.spotify.com/v1/users/${userId}/playlists`,
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
+			);
+
+			const playlists = data.items;
+			this.setState({ playlists });
+		} catch (err) {
+			console.log(err);
+		}
+	};

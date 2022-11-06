@@ -57,7 +57,7 @@ class Home extends Component {
 
 	render() {
 		const CLIENT_ID = "b58810d40a6d43df8a0ac251a1c75e68";
-		const REDIRECT_URI = "http://localhost:3000";
+		const REDIRECT_URI = "https://theplugforspotify.netlify.app";
 		const scopes = "user-top-read user-follow-read user-read-recently-played";
 		const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 		const RESPONSE_TYPE = "token";

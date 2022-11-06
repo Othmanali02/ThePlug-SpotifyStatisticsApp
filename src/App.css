@@ -407,7 +407,7 @@ table {
 }
 
 .headGame {
-	margin-top: -160px;
+	margin-top: -140px;
 	width: 60%;
 	text-align: center;
 }
@@ -420,20 +420,65 @@ table {
 	justify-items: center;
 	grid-gap: 15px;
 }
+/* .Options.active{
+	
+} */
 
 .headGame h6 {
 	margin-top: 10px;
 	margin-bottom: 0px;
 }
 .songGame {
-	background-color: rgb(227, 100, 53);
 	cursor: pointer;
-	color: whitesmoke;
+	color: white;
 	border-radius: 5px;
 	padding: 10px 10px;
 }
+.songGame:hover {
+	background-color: rgb(97, 95, 95);
+}
+
+.songGame.correct {
+	background-color: #2cb85d;
+}
+.songGame.wrong {
+	background-color: brown;
+}
 .AlbumCover {
 	height: 150px;
+}
+
+.nextQuestion {
+	padding: 20px 30px;
+	border: none;
+	background-color: #1d2952;
+	color: white;
+	margin-top: 40px;
+	cursor: pointer;
+	font-size: 18px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	font-weight: 600;
+}
+
+.nextIcon {
+	filter: invert(1);
+	vertical-align: middle;
+	margin-left: 10px;
+	height: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+	.headGame {
+		margin-top: -20px;
+	}
+	.Options {
+		grid-auto-flow: row;
+	}
+	.nextQuestion {
+		font-size: 16px;
+		padding: 10px 50px;
+	}
 }
 
 .site-footer {

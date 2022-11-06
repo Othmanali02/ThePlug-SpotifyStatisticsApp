@@ -1,8 +1,3 @@
-.App-logo {
-	height: 40vmin;
-	pointer-events: none;
-}
-
 .homeMsg {
 	margin-top: -40px;
 	text-align: center;
@@ -13,10 +8,11 @@
 .profPic {
 	margin-top: 50px;
 	border-radius: 50%;
+	height: 220px;
 	margin-bottom: 0px;
 }
 .userInfo {
-	margin-top: 0px;
+	margin-top: -50px;
 	margin-bottom: -20px;
 }
 .userInfo h1 {
@@ -80,7 +76,7 @@
 	margin-top: 20px;
 	display: inline-block;
 	cursor: pointer;
-	border-radius: 16px;
+	border-radius: 20px;
 }
 
 .logout {
@@ -92,7 +88,22 @@
 	margin-bottom: 30px;
 	font-weight: 600;
 	cursor: pointer;
+	color: black;
+}
+
+.game {
+	background-color: #1d2952;
 	color: white;
+	border: none;
+	font-size: 18px;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	margin-top: 20px;
+	display: inline-block;
+	font-weight: 600;
+	cursor: pointer;
+	border-radius: 10px;
 }
 
 .accGrid {
@@ -144,8 +155,46 @@
 	padding-top: 15px;
 }
 
+.tableImageArt {
+	height: 200px;
+	padding-top: 15px;
+	justify-items: center;
+	cursor: pointer;
+}
+.artistBubble {
+	justify-items: center;
+}
+.artistBubble h5 {
+	margin-top: 10px;
+	text-align: center;
+	width: fit-content;
+}
+.artistBubble h5 a {
+	color: white;
+	text-decoration: none;
+}
+.artistBubble:hover.artistBubble h5 a {
+	color: #1db954;
+	text-decoration: underline;
+}
+
+.tableItemsArt {
+	display: grid;
+	justify-items: center;
+	grid-template-columns: 1fr 1fr 1fr;
+	padding: 0px;
+}
+@media only screen and (max-width: 600px) {
+	.tableItemsArt {
+		grid-template-columns: 1fr 1fr;
+	}
+	.tableImageArt {
+		height: 150px;
+	}
+}
+
 table {
-	width: 40%;
+	width: 45%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -153,6 +202,20 @@ table {
 .tableName {
 	text-align: left;
 	padding-left: 10px;
+}
+
+.songLink {
+	color: white;
+	text-decoration: none;
+}
+.songLink:hover {
+	color: brown;
+	text-decoration: underline;
+}
+
+.exp {
+	height: 15px;
+	margin-top: 0px;
 }
 .App {
 	background-image: url("./components/images/giphy.gif");
@@ -255,6 +318,21 @@ table {
 	display: flex;
 }
 
+.listTrack.active {
+	background-color: #1db954;
+	color: #212121;
+}
+
+.listGenre.active {
+	background-color: #1db954;
+	color: #212121;
+}
+
+.listArt.active {
+	background-color: #1db954;
+	color: #212121;
+}
+
 .TopG li {
 	margin-right: 20px;
 	list-style: none;
@@ -267,6 +345,51 @@ table {
 	display: inline-block;
 	cursor: pointer;
 	border-radius: 16px;
+}
+.TopG li:hover {
+	text-decoration: underline;
+}
+
+.timePeriods {
+	list-style: none;
+	display: grid;
+	margin-top: 0px;
+	grid-auto-flow: column;
+	background-color: brown;
+	justify-content: center;
+	padding: 7px 15px;
+	border-radius: 10px;
+	color: #1db954;
+	margin-bottom: 20px;
+}
+.vl {
+	border-left: 0.1px solid #1db954;
+	height: 26px;
+	margin-right: 10px;
+}
+
+.timePeriods li {
+	margin-right: 10px;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 18px;
+	justify-items: center;
+
+	text-align: center;
+}
+
+.timePeriods li:hover {
+	text-decoration: underline;
+}
+
+.activeTimeRange {
+	text-decoration: underline;
+}
+
+.mainPriv {
+	color: white;
+	z-index: 999;
+	position: absolute;
 }
 
 @media only screen and (max-width: 600px) {
@@ -281,6 +404,36 @@ table {
 	.TopG li {
 		padding: 7px 90px;
 	}
+}
+
+.headGame {
+	margin-top: -160px;
+	width: 60%;
+	text-align: center;
+}
+
+.Options {
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: center;
+	align-items: center;
+	justify-items: center;
+	grid-gap: 15px;
+}
+
+.headGame h6 {
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+.songGame {
+	background-color: rgb(227, 100, 53);
+	cursor: pointer;
+	color: whitesmoke;
+	border-radius: 5px;
+	padding: 10px 10px;
+}
+.AlbumCover {
+	height: 150px;
 }
 
 .site-footer {
@@ -304,8 +457,15 @@ table {
 .credit {
 	margin-top: 10px;
 }
+.GitHub {
+	height: 30px;
+	margin-top: 17px;
+	filter: invert(1);
+	margin-left: 20px;
+}
+
 .othman {
-	margin-left: 50px;
+	margin-left: 20px;
 	color: lightgreen;
 	background-color: #1d2952;
 	text-decoration: none;

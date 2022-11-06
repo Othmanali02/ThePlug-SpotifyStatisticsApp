@@ -6,11 +6,9 @@ import info from "./images/813715-removebg-preview.png";
 class NavBar extends Component {
 	state = {};
 	handleHelp = () => {
-		alert("Help!");
+		window.open("/privacy");
 	};
-	handleInfo = () => {
-		alert("Info!");
-	};
+
 	render() {
 		return (
 			<React.Fragment>

@@ -2,26 +2,18 @@ import React, { Component } from "react";
 import axios from "axios";
 import spotify from "./images/spotify.png";
 import Bubbles from "./bubbles";
-import ArtistTable from "./artistTable";
-import ItemTable from "./table";
+import Statistics from "./Statistics";
 
 class Home extends Component {
 	state = {
 		token: "",
 		userData: {},
 		userImage: "",
-		userTop: [],
-		userTopArtists: [],
-		tracks: false,
-		artists: false,
-		genres: false,
 	};
 
 	componentDidMount = async () => {
 		const hash = window.location.hash;
 		let token = window.localStorage.getItem("token");
-
-		// getToken()
 
 		if (!token && hash) {
 			token = hash
@@ -29,14 +21,11 @@ class Home extends Component {
 				.split("&")
 				.find((elem) => elem.startsWith("access_token"))
 				.split("=")[1];
-
 			window.location.hash = "";
 			window.localStorage.setItem("token", token);
 		}
 		this.setState({ token });
 		this.renderUserData(token);
-		this.renderUserTopData(token);
-		this.renderUserArtistTopData(token);
 		if (localStorage.getItem("token")) {
 			this.props.handleLogin();
 		}
@@ -62,60 +51,8 @@ class Home extends Component {
 		}
 	};
 
-	renderTopTracks = () => {
-		const tracks = !this.state.tracks;
-		const artists = false;
-		const genres = false;
-		this.setState({ tracks, artists, genres });
-	};
-	renderTopArtists = () => {
-		const artists = !this.state.artists;
-		const tracks = false;
-		const genres = false;
-		this.setState({ tracks, artists, genres });
-	};
-	renderTopGenres = () => {
-		const genres = !this.state.genres;
-		const artists = false;
-		const tracks = false;
-		this.setState({ tracks, artists, genres });
-	};
-
-	renderUserTopData = async (token) => {
-		if (localStorage.getItem("token")) {
-			try {
-				const { data } = await axios.get(
-					`https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=100`,
-					{
-						headers: {
-							Authorization: `Bearer ${token}`,
-						},
-					}
-				);
-				const userTop = data.items;
-				this.setState({ userTop });
-			} catch (err) {
-				console.log(err);
-			}
-		}
-	};
-	renderUserArtistTopData = async (token) => {
-		if (localStorage.getItem("token")) {
-			try {
-				const { data } = await axios.get(
-					`https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=100`,
-					{
-						headers: {
-							Authorization: `Bearer ${token}`,
-						},
-					}
-				);
-				const userTopArtists = data.items;
-				this.setState({ userTopArtists });
-			} catch (err) {
-				console.log(err);
-			}
-		}
+	handleSpotifyGame = () => {
+		window.location = "/game";
 	};
 
 	render() {
@@ -146,29 +83,20 @@ class Home extends Component {
 						<div className="WRAP">
 							<h1 className="homeMsg">
 								Authorize your Spotify account to access your Top Tracks,
-								Artists, Genres!
+								Artists and Genres!
 							</h1>
 						</div>
 					</React.Fragment>
 				)}
-
-				{this.state.token ? (
+				{this.state.token && (
 					<React.Fragment>
-						<ul className="TopG">
-							<li onClick={() => this.renderTopTracks()}>Top Tracks</li>
-							<li onClick={() => this.renderTopArtists()}>Top Artists</li>
-							<li onClick={() => this.renderTopGenres()}>Top Genres</li>
-						</ul>
-						{this.state.tracks && <ItemTable userTop={this.state.userTop} />}
-						{this.state.artists && (
-							<ArtistTable userTop={this.state.userTopArtists} />
-						)}
-						{/* {this.state.genres && <ItemTable userTop={this.state.userTop} />} */}
+						<button className="game" onClick={() => this.handleSpotifyGame()}>
+							Play the Spotify Game
+						</button>{" "}
 					</React.Fragment>
-				) : (
-					<Bubbles />
 				)}
-
+				{this.state.token && <Statistics token={this.state.token} />}{" "}
+				{!this.state.token && <Bubbles />}
 				{!this.state.token ? (
 					<a
 						className="login"

@@ -5,6 +5,11 @@
 	width: 90%;
 }
 
+@font-face {
+	font-family: "QueryGrand";
+	src: url("resources/Querygrand-BWyAG.ttf");
+}
+
 .profPic {
 	margin-top: 50px;
 	border-radius: 50%;
@@ -28,6 +33,12 @@
 	grid-gap: 20px;
 	align-items: center;
 	align-self: center;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) /* applied to lg also */ {
+	.bubbles {
+		grid-template-columns: 240px 240px;
+	}
 }
 
 @media only screen and (max-width: 600px) {
@@ -81,29 +92,36 @@
 
 .logout {
 	padding: 10px 20px;
-	background-color: #1db954;
+	background-color: #ff0000;
 	border: none;
 	border-radius: 10px;
 	margin-top: 20px;
 	margin-bottom: 30px;
 	font-weight: 600;
 	cursor: pointer;
-	color: black;
+	color: white;
 }
 
 .game {
-	background-color: #1d2952;
+	background-color: #27213c;
+
 	color: white;
 	border: none;
-	font-size: 18px;
-	padding: 10px 20px;
+	font-size: 27px;
+	padding: 30px 20px;
 	text-align: center;
 	text-decoration: none;
 	margin-top: 20px;
 	display: inline-block;
-	font-weight: 600;
+	font-weight: 300;
 	cursor: pointer;
 	border-radius: 10px;
+	transition-duration: 0.3s;
+}
+.game:hover {
+	background-color: #f5f5dc;
+
+	color: black;
 }
 
 .accGrid {
@@ -124,7 +142,7 @@
 	width: 100%;
 	z-index: 100;
 	text-align: center;
-	height: 286px;
+	height: 220px;
 	border: none;
 }
 
@@ -184,9 +202,31 @@
 	grid-template-columns: 1fr 1fr 1fr;
 	padding: 0px;
 }
+.scoreCard {
+	padding: 10px 10px;
+}
+.scoreCard.four {
+	background-color: #1db954;
+}
+.scoreCard.three {
+	background-color: rgb(201, 178, 4);
+}
+.scoreCard.two {
+	background-color: #d04d15;
+}
+.scoreCard.one {
+	background-color: #c03a1b;
+}
+.scoreCard.zero {
+	background-color: #c71414;
+}
 @media only screen and (max-width: 600px) {
 	.tableItemsArt {
 		grid-template-columns: 1fr 1fr;
+	}
+	.game {
+		font-size: 18px;
+		padding: 20px 10px;
 	}
 	.tableImageArt {
 		height: 150px;
@@ -254,6 +294,12 @@ table {
 	padding-left: 30px;
 }
 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) /* applied to lg also */ {
+	table {
+		width: 85%;
+	}
+}
+
 @media only screen and (max-width: 600px) {
 	table {
 		width: 100%;
@@ -319,17 +365,17 @@ table {
 }
 
 .listTrack.active {
-	background-color: #1db954;
+	background-color: #f5f5dc;
 	color: #212121;
 }
 
 .listGenre.active {
-	background-color: #1db954;
+	background-color: #f5f5dc;
 	color: #212121;
 }
 
 .listArt.active {
-	background-color: #1db954;
+	background-color: #f5f5dc;
 	color: #212121;
 }
 
@@ -337,7 +383,7 @@ table {
 	margin-right: 20px;
 	list-style: none;
 	background-color: #212121;
-	color: #1db954;
+	color: #f5f5dc;
 	font-size: 18px;
 	font-weight: 600;
 	padding: 7px 20px;
@@ -355,15 +401,15 @@ table {
 	display: grid;
 	margin-top: 0px;
 	grid-auto-flow: column;
-	background-color: brown;
+	background-color: #d01c1f;
 	justify-content: center;
 	padding: 7px 15px;
 	border-radius: 10px;
-	color: #1db954;
+	color: #f5f5dc;
 	margin-bottom: 20px;
 }
 .vl {
-	border-left: 0.1px solid #1db954;
+	border-left: 0.1px solid #f5f5dc;
 	height: 26px;
 	margin-right: 10px;
 }
@@ -386,10 +432,28 @@ table {
 	text-decoration: underline;
 }
 
-.mainPriv {
+.privacy {
+	margin-top: -10px;
+	text-align: center;
+}
+.privacy h4 {
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
 	color: white;
-	z-index: 999;
-	position: absolute;
+}
+.personalData {
+	color: #0a62c7;
+}
+.privacy p {
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
+}
+
+.mainPriv {
+	color: #1db954;
 }
 
 @media only screen and (max-width: 600px) {
@@ -420,9 +484,47 @@ table {
 	justify-items: center;
 	grid-gap: 15px;
 }
-/* .Options.active{
-	
-} */
+.Options.active {
+	pointer-events: none;
+}
+
+.Giffy {
+	height: 300px;
+	text-align: center;
+}
+
+.answer {
+	text-align: center;
+	margin-top: 0px;
+	background-color: #1b1b1b;
+}
+
+.answer h1 {
+	margin-top: 0px;
+}
+
+.linkToFriend {
+	margin-top: 0px;
+	font-weight: 500;
+}
+
+.linkToFriend a {
+	color: #0a62c7;
+}
+
+.newGame {
+	color: #f5f5dc;
+	font-weight: 600;
+	font-size: 15px;
+}
+
+.linkToFriend {
+	color: white;
+}
+
+.Question h3 {
+	margin-top: 70px;
+}
 
 .headGame h6 {
 	margin-top: 10px;
@@ -433,6 +535,7 @@ table {
 	color: white;
 	border-radius: 5px;
 	padding: 10px 10px;
+	transition-duration: 0.5s;
 }
 .songGame:hover {
 	background-color: rgb(97, 95, 95);
@@ -441,37 +544,83 @@ table {
 .songGame.correct {
 	background-color: #2cb85d;
 }
+
 .songGame.wrong {
 	background-color: brown;
 }
+
 .AlbumCover {
 	height: 150px;
+}
+
+.artistQuestionh3 {
+	padding-top: 50px;
+}
+
+.ArtistCover {
+	height: 250px;
+}
+
+.artistQuestion {
+	color: #d01c1f;
 }
 
 .nextQuestion {
 	padding: 20px 30px;
 	border: none;
-	background-color: #1d2952;
-	color: white;
+	background-color: #27213c;
+	color: #f5f5dc;
 	margin-top: 40px;
 	cursor: pointer;
 	font-size: 18px;
 	margin-bottom: 0px;
 	border-radius: 10px;
 	font-weight: 600;
+	transition-duration: 0.3s;
 }
 
 .nextIcon {
-	filter: invert(1);
 	vertical-align: middle;
 	margin-left: 10px;
 	height: 30px;
 }
 
+.linkContainer {
+	padding-top: 30px;
+}
+
+.linktoMain {
+	color: #f5f5dc;
+}
+
+.Play.unavailable {
+	opacity: 50%;
+	cursor: default;
+}
+
+.Play {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	cursor: pointer;
+}
+
+.Play h5 {
+	margin-top: 10px;
+}
+
+.PlayIcon {
+	filter: invert(1);
+	height: 200px;
+}
+
 @media only screen and (max-width: 600px) {
 	.headGame {
-		margin-top: -20px;
+		margin-top: -50px;
 	}
+	.Giffy {
+		height: 200px;
+	}
+
 	.Options {
 		grid-auto-flow: row;
 	}

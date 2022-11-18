@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import music from "./images/music.png";
-import playlist from "./images/playlist.png";
+import play from "./images/play.png";
 import spotify from "./images/spotify.png";
 import stat from "./images/stat.png";
 
@@ -17,10 +17,10 @@ class Bubbles extends Component {
 					</div>
 					<div className="bubble">
 						<div className="WRAP">
-							<img className="bubbleImg white" src={playlist} alt="Playlist" />
+							<img className="bubbleImg white" src={play} alt="Playlist" />
 						</div>
 
-						<h6>Try our playlist generator and generate yourself a playlist</h6>
+						<h6>Play a game based on your data</h6>
 					</div>
 					<div className="bubble">
 						<div className="WRAP">

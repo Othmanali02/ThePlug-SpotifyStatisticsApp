@@ -10,7 +10,7 @@ class Statistics extends Component {
 		userTopArtists: [],
 		tracks: false,
 		artists: false,
-		genres: false,
+		// genres: false,
 		lastMonth: true,
 		sixMonths: false,
 		allTime: false,
@@ -24,37 +24,37 @@ class Statistics extends Component {
 	renderTopTracks = () => {
 		const tracks = !this.state.tracks;
 		const artists = false;
-		const genres = false;
+		// const genres = false;
 		const element = document.querySelector(".listTrack");
 		const element1 = document.querySelector(".listArt");
-		const element2 = document.querySelector(".listGenre");
+		// const element2 = document.querySelector(".listGenre");
 
 		if (tracks) {
 			element.classList.add("active");
 			element1.className = "listArt";
-			element2.className = "listGenre";
+			// element2.className = "listGenre";
 		} else {
 			element.className = "listTrack";
 		}
-		this.setState({ tracks, artists, genres });
+		this.setState({ tracks, artists }); //genres
 	};
 
 	renderTopArtists = () => {
 		const artists = !this.state.artists;
 		const tracks = false;
-		const genres = false;
+		// const genres = false;
 		const element = document.querySelector(".listArt");
 		const element1 = document.querySelector(".listTrack");
-		const element2 = document.querySelector(".listGenre");
+		// const element2 = document.querySelector(".listGenre");
 
 		if (artists) {
 			element.classList.add("active");
 			element1.className = "listTrack";
-			element2.className = "listGenre";
+			// element2.className = "listGenre";
 		} else {
 			element.className = "listArt";
 		}
-		this.setState({ tracks, artists, genres });
+		this.setState({ tracks, artists }); //genre
 	};
 
 	renderTopGenres = () => {
@@ -72,7 +72,7 @@ class Statistics extends Component {
 			element2.className = "listGenre";
 		}
 		this.setState({ tracks, artists, genres });
-	};
+	}; //for when i make genres
 
 	renderUserArtistTopData = async (token) => {
 		if (localStorage.getItem("token")) {
@@ -220,9 +220,9 @@ class Statistics extends Component {
 					<li className="listArt" onClick={() => this.renderTopArtists()}>
 						Top Artists
 					</li>
-					<li className="listGenre" onClick={() => this.renderTopGenres()}>
+					{/* <li className="listGenre" onClick={() => this.renderTopGenres()}>
 						Top Genres
-					</li>
+					</li> */}
 				</ul>
 				{this.state.tracks && (
 					<React.Fragment>
